@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+
+
+.contttent{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.container1 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 1px solid #ccc;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
+.cardL {
+    width: 50%;
+    height: 100%;
+	float: left;
+    position: absolute;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+}
+.cardL div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 260px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 140px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.cardL .frontL {
+  background: black;
+}
+.cardL .backL {
+    background: black;
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+.cardL.flippedL {
+     -webkit-transform: translateX(-100%) rotateY( 360deg );
+    -moz-transform: translateX(-100%) rotateY( 360deg );
+    -o-transform: translateX(-100%) rotateY( 360deg );
+    transform: translateX(-100%) rotateY( 360deg );
+}
+.cardL.flippedLB {
+     -webkit-transform: translateX(100%) rotateY( 360deg );
+    -moz-transform: translateX(100%) rotateY( 360deg );
+    -o-transform: translateX(100%) rotateY( 360deg );
+    transform: translateX(100%) rotateY( 360deg );
+}
+
+
+
+
+.cardR {
+    width: 50%;
+    height: 100%;
+	float: left;
+	position: absolute;
+	left: 50%;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+}
+.cardR div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 260px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 140px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.cardR .frontR {
+  background: black;
+}
+.cardR .backR {
+    background: black;
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+.cardR.flippedR {
+     -webkit-transform: translateX(100%) rotateY( 360deg );
+    -moz-transform: translateX(100%) rotateY( 360deg );
+    -o-transform: translateX(100%) rotateY( 360deg );
+    transform: translateX(100%) rotateY( 360deg );
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="container">
+<div align="center">
+<div class="contttent">	
+<div class="container1">
+  <div class="cardL" onclick="flipL()">
+    <div class="frontL">
+	</div>
+	
+  </div>
+    <div class="cardR" onclick="flipR()">
+    <div class="frontR">
+	</div>
+	
+  </div>
+  
+
+	<img src="2.jpg" id="fdf" class="responsive" style="display:block; height:500px; width:500px;">
+	<video width="500" height="500" id="fdfff" style="display:none;"><source src="vid.mp4" type="video/mp4"></video>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+<script>
+var checkL = false;
+var checkR = false;
+var checkLB = false;
+var checkRB = false;
+function flipL() {
+	if ($('.cardL').hasClass('flippedL')) {
+		$('.cardL').removeClass('flippedL')
+		checkL = false;
+		checkR = false;
+		myFunction();
+	}else {
+		$('.cardL').addClass('flippedL');
+		checkL = true;
+	}
+	if(checkR){
+		$("#fdf").fadeOut((3000),function(){
+			$('#fdfff').fadeIn('fast');
+			$('#fdfff').get(0).play();
+		});
+	}else{
+	
+	}
+}
+function flipR(){
+	if ($('.cardR').hasClass('flippedR')) {
+		$('.cardR').removeClass('flippedR')
+		checkL = false;
+		checkR = false;
+		myFunction();
+	}else {
+		$('.cardR').addClass('flippedR');
+		checkR = true;
+	}
+	if(checkL){
+		$("#fdf").fadeOut((3000),function(){
+			$('#fdfff').fadeIn('fast');
+			$('#fdfff').get(0).play();
+		});
+	}else{
+	
+	}
+	
+}
+function myFunction() {
+	
+if(!($('.cardL').hasClass('flippedL')) && !($('.cardR').hasClass('flippedR'))){
+			$("#fdfff").fadeOut((3000),function(){
+				$('#fdf').fadeIn('fast');
+			});
+  }
+}
+</script>
+
+</html>
